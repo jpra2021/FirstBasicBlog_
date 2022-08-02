@@ -3,10 +3,12 @@
 import "./App.css";
 import { useState } from "react";
 
+//functions
+
 function App() {
   //Variables
-  let [postTitle, a] = useState(["title1", "title2", "title3"]);
-  let [likeCounter, b] = useState(0);
+  let [postTitle, changeTitle] = useState(["title1", "title2", "title3"]);
+  let [like, likecounter] = useState(0);
 
   //body
   return (
@@ -15,11 +17,27 @@ function App() {
         <h4 style={{ color: "red", fontSize: "16px" }}>Blog</h4>
       </div>
 
+      <button
+        onClick={() => {
+          let copy = [...postTitle];
+          copy[0] = "changed title1";
+          changeTitle(copy);
+        }}
+      >
+        Edit
+      </button>
+
       <div className="list-box">
         <h4 className="title-list">
           {postTitle[0]}
-          <span>💝</span>
-          {likeCounter}
+          <span
+            onClick={() => {
+              likecounter(like + 1);
+            }}
+          >
+            💝
+          </span>
+          {like}
         </h4>
         <p className="date-list">published date : 2022.07.21</p>
         <h4 className="title-list">{postTitle[1]}</h4>
